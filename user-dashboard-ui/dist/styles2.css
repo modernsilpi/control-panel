@@ -1,0 +1,581 @@
+
+*, body {
+    padding: 0;
+    margin: 0;
+    position: relative;
+   
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+/* user dashboard */
+.userdashboard{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.my-orders {
+   display: inline-block;
+   padding: 10px;
+   background:  #2a2a2b;
+   color: white;
+   border-radius: 10px;
+   margin:10px 0 10px 5px;
+   border: 1px solid rgb(97, 97, 97);
+   box-shadow: 1px 1px 1px rgb(148, 147, 147);
+}
+
+.fridge {
+    margin: 20px;
+    height: 350px;
+    box-shadow: 1px 1px 10px rgb(134, 134, 134);
+    border-radius: 10px;
+    overflow: auto;
+
+}
+
+.my-orders span {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.my-ordhead {
+    margin: 10px auto;
+}
+
+.order-pic2 h5 {
+    margin: 0;
+}
+
+.my-orders p {
+    margin: 4px;
+    font-weight: 200;
+    font-size: 16px;
+}
+
+.order-pic img {
+    height: 60px;
+    width: 60px;
+    margin:0 10px 0 10px;
+}
+
+ .ordered-dates, .order-pic2 p {
+    display: inline-flex;
+}
+
+.order-pic2 {
+    display: inline-flex;
+}
+
+.order-pic p, .ordered-dates p {
+    margin-right: 20px;
+}
+
+.userdashboard div{
+    display: inline-flex;
+}
+.userdashboard div p{
+    margin-left: 20px;
+    
+}
+/*header*/
+
+header {
+    background: #2a2a2b;
+    height: 40px;
+}
+
+header ul a:hover{
+    text-decoration: none;
+    color: rgb(207, 206, 206);
+    transition: 0.3s;
+}
+
+header ul a {
+    color: rgb(90, 89, 89);
+}
+
+header ul {
+    list-style: none;
+    display: inline-flex;
+    margin: 0 auto;
+    /* left: 50%; */
+    margin-right: 250px;
+}
+
+header ul li {
+    margin-left: 15px;
+}
+
+.login-form {
+    width: 350px;
+    height: 550px;
+    margin: 80px 0 0 500px;
+    padding: 10px;
+    background:  #2a2a2b;
+    color: white;
+    z-index: 100;
+    transition: 0.4s;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+.back-layer, .back-layer2, .back-layer3 {
+    z-index: 99;
+    background: rgba(218, 218, 218, 0.925);
+    margin-top: -600px;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    transition:all 0.4s;
+    display: none;
+}
+.back-layer3{
+    margin-top: -10px;
+}
+.close-btn {
+    float: right;
+    background: black;
+    color: white;
+    margin: 80px 30px 0 0;
+    border-radius: 3px;
+    padding: 3px;
+    transition:all 0.4s;
+}
+
+.close-btn:hover {
+    background: rgb(214, 10, 10);
+    
+}
+
+
+/*navigation*/
+.navbar-brand {
+   margin-left: 10%;
+   display: inline-flex;
+}
+
+.navbar-brand img {
+   margin-top: 5px;
+   height: 40px;
+   width: 40px;
+}
+
+.navbar-brand p {
+    margin: 7px 20px;
+    font-size: 26px;
+}
+
+.nav-maps ul a:hover{
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.nav-maps ul a {
+    color: white;
+}
+
+.nav-maps ul {
+    list-style: none;
+    display: inline-flex;
+    margin: 5px auto;
+    left: 80%;
+}
+
+.nav-maps ul li {
+    margin-left: 15px;
+}
+
+.navbar-nav li {
+    display: inline-flex;
+    margin-left: 10px;
+}
+
+.fas {
+    margin-top: 13px;
+    font-size: 16px;
+    color: rgb(189, 188, 188);
+}
+
+nav {
+    height: 50px;
+    margin-top: 40px;
+}
+
+.nav-lists {
+    margin-left: 40%;
+}
+.usercart {
+    display: none;
+}
+
+/*carousel section*/
+
+.carousel-section {
+    margin-top: 100px;
+    background:  #2a2a2b;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.carousel {
+    height: 500px;
+}
+
+.carousel-inner {
+    border-radius: 10px;
+}
+
+.carousel img {
+   height: 500px;
+}
+
+/*category buttons*/
+
+.buttons-container {
+    margin: 50px auto;
+    text-align: center;
+}
+
+.btn-group {
+    margin-left: 20px;
+    border-radius: 10px;
+}
+
+
+.camerabutton {
+    margin-left: 10px;
+}
+
+.row {
+    margin-left: 50px;
+}
+
+/*date selector*/
+
+.date-selector-div {
+    /* display: inline-flex; */
+    margin: 0 auto 25px auto;
+    /* padding: 10%; */
+    width: 900px;
+    text-align: center;
+    border: 3px solid rgb(24, 24, 24);
+    border-radius:0 0 10px 10px;
+}
+
+.date-pickers {
+    display: inline-flex;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.left-date p, .right-date p{
+    border: 1px solid rgb(163, 163, 163);
+    width: 250px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.left-date {
+     margin-left: 120px; 
+}
+
+ .right-date {
+    margin-left: 30%;
+    float: right;
+}
+
+/*cart table*/
+
+.cart-table {
+   margin: 0 10%;
+   border-radius:0 0 10px 10px ;
+   border: 3px solid rgb(24, 24, 24);
+}
+
+ .booking-heading {
+    margin: 50px auto 0 auto;
+}
+
+.cart-table div{
+    display: inline-flex;
+    margin: 0 auto;
+    /* border: 1px solid rgba(204, 203, 203, 0.973); */
+}
+
+.cart-table div div {
+    margin:0 auto;
+    text-align: center;
+    justify-content: center;
+    padding: 20px;
+    width: 200px;
+    height: 120px;
+}
+
+.cart-table div img{
+    height: 70px;
+    width: 70px;
+    box-shadow: 1px 1px 5px black;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+
+.cart-text p {
+    margin-top: 25px;
+}
+
+.cart-table .control {
+    display: inline-flex;
+    color: white;
+}
+
+.cart-table .control .count-span {
+    width: 50px;
+    margin-top: 28px;
+    color: black;
+}
+
+.cart-table .control .pl-mi {
+    /* background: #f0f0f1; */
+    /* border-radius: 50%;
+   
+    width: 30px;
+    height: 30px;
+    padding: 2px; */
+    margin-top: 25px;
+}
+
+ .material-icons {
+    color: rgba(37, 37, 37, 0.938);
+    font-size: 28px;
+
+}
+
+.material-icons:hover {
+    color: black;
+    transition: all 0.4s;
+    cursor: pointer;
+}
+
+/* .cart-table .control .pl-mi:hover {
+    background: rgb(53, 53, 53);
+    color: rgb(190, 189, 189);
+    transition: all 0.4s
+} */
+
+.totalCart {
+    margin: 27px 0 0 330px;
+    font-size: 20px;
+    
+}
+
+/* promo code */
+.promoerror{
+    width: 300px;
+    height: 50px;
+    text-align: left;
+    margin-left: 130px;
+
+    
+}
+
+.input-group{
+    width: 300px;
+    margin-left: 130px;
+    margin-top: 30px;
+
+}
+.input-group1{
+    display: inline-flex;
+}
+
+.checkout {
+    text-align: center;
+}
+
+.booking-heading {
+    background: rgb(34, 33, 33);
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    color: white;
+    padding-top: 3px;
+    height: 70px;
+    width: 900px;
+}
+
+.booking-heading h3 {
+    /* background: white; */
+    margin: 10px auto 0 auto;
+    height: 70px;
+    border-top: 150px;
+    border-bottom: 50px;
+    width: 200px;
+}
+
+.cart-head {
+    width: 997px;
+}
+
+/*rules*/
+
+.star {
+    font-size: 30px;
+}
+
+.rules {
+    text-align: center;
+    margin: 25px auto;
+    color: rgba(177, 19, 19, 0.966);
+    font-weight: 500;
+}
+
+/*payment*/
+
+/* .payment {
+    margin: 50px auto;
+}
+
+.payment form {
+    width: 700px;
+    margin: 10px auto;
+    
+}
+
+.f-g2 input{
+   width: 430px;
+}
+
+.form-cvv .form-group {
+    width: 150px;
+}
+
+.form-cvv .form-group input, .form-cvv .form-group label {
+    width: 100px;
+    /*margin-left: 30px;*/
+/* }
+
+.form-cvv .f-g1 input, .form-cvv .f-g1 label {
+    margin-left: 30px;
+}
+
+
+.form-cvv {
+    display: inline-flex;
+} */ 
+
+.payment-sections {
+    display: none;
+    margin: 50px;
+    border-radius: 10px;
+    border: 1px solid rgb(194, 193, 193);
+    box-shadow: 1px 1px 10px rgb(173, 173, 173);
+
+}
+
+/* .cart-heading {
+    margin-top: 50px;
+} */
+
+/*date selector*/
+
+/* .app {
+    position: fixed;
+    display: none;
+} */
+
+
+/*cards*/
+
+.card {
+    border-radius: 10px;
+    text-align: center;
+    /* height: 300px; */
+    background: rgb(34, 33, 33);
+    color: rgb(128, 127, 127);
+}
+
+.card img {
+    padding: 5px;
+    height: 200px;
+    /* width: 250px; */
+    border-radius: 10px;
+}
+
+/* .col-lg-3 {
+    margin: 10px;
+}  */
+
+.col-lg-3 {
+    margin: 10px; 
+}  
+
+.rentit {
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    padding: 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: rgba(59, 59, 59, 0.945);
+    box-shadow: 1px 1px 5px rgb(32, 32, 32);
+    border: none;
+
+}
+
+.rentit:hover {
+    background: white;
+    color:  rgba(36, 36, 36, 0.945);
+}
+
+.rate-qty {
+    display: inline-flex;
+}
+
+.card-title {
+    margin: 0;
+}
+
+.rate-qty p {
+    margin: 5px 10px;
+}
+
+.card-body {
+    padding: 4px;
+}
+/*footer*/
+
+footer {
+    background: rgb(34, 33, 33);
+    height: 70px;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+.left-footer {
+    float: left;
+    margin: 20px 20px 0 20px;
+}
+
+.right-footer {
+    float: right;
+}
+
+.right-footer ul{
+    list-style: none;
+    display: inline-flex;
+    margin: 20px 20px 0 20px;
+}
+
+.right-footer ul li {
+    margin-left: 10px;
+}
+
+.right-footer ul li a {
+    text-decoration: none;
+    color: white;
+}

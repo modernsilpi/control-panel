@@ -19,6 +19,11 @@
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
+.anch {
+  display: inline-flex;
+  margin-top: 10px;
+}
+
 .form-control {
     width: 200px;
 }
@@ -35,6 +40,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 .category-buttons div {
     margin: 10px;
+}
+
+.category-buttons div p {
+  width: 80px;
 }
 </style>
 <body class="w3-light-grey">
@@ -95,6 +104,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       
   </div>
 
+  <h3 class="text-center">Sub-Categories</h3>
+
+
   <div class="category-buttons">
       <div>
         <button class="btn btn-dark">cameras</button>
@@ -107,8 +119,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         </div>
 
         <div>
-           <p>nikon</p>
-           <p>canon</p>
+          <a href="" class="anch"><p>nikon</p><span class="btn btn-danger">X</span></a><br>
+          <a href="" class="anch"><p>canon</p><span class="btn btn-danger">X</span></a>
         </div>
       </div>
 
@@ -134,8 +146,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
    
   </div>
 
-  <h3 class="text-center">Sub-Categories</h3>
-
+  
   <!-- <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-third">
