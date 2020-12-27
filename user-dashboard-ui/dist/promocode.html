@@ -178,54 +178,55 @@ input:checked + .table-slider:before {
   </header>
 
  <div>
-     <a class="btn btn-success">Add</a>
+     <a class="btn btn-success createpromo">Add</a>
  </div>
 
- <div>
-    <form>
+ <div class="promocode-form">
+    <form onsubmit="makeapromo();return false">
         <div class="form-group">
           <label for="exampleInputEmail1">Code</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter promocode">
+          <input type="text" class="form-control" id="promocode" aria-describedby="emailHelp" placeholder="Enter promocode" required>
         </div>
 
         <div class="form-group">
             <label for="exampleInputEmail1">Cut off</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter cutoff">
+            <input type="number" class="form-control" id="cutoff"  aria-describedby="emailHelp" placeholder="Enter cutoff" required>
           </div>
 
           <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Preference</label><br>
-          <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+          <select class="custom-select my-1 mr-sm-2" id="type" required>
             <option selected>Choose...</option>
-            <option value="1">Amount</option>
-            <option value="2">Percentage</option>
+            <option value="price">Amount</option>
+            <option value="percentage">Percentage</option>
             
           </select>
 
           <div class="form-group">
             <label for="exampleInputEmail1">Amount / Percentage</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Amount / percentage">
+            <input type="number" class="form-control" id="amount"  aria-describedby="emailHelp" placeholder="Enter Amount / percentage" required>
           </div>
 
-          <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Promo Code Access</label><br>
-          <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+          <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Status of promo</label><br>
+          <select class="custom-select my-1 mr-sm-2" id="status" required>
             <option selected>Choose...</option>
-            <option value="1">All Users</option>
-            <option value="2">New Users</option>
-            
-          </select><br>
-          <p class="active-p">Active / Inactive</p>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+            </select><br>
+
+          <!-- <p class="active-p">Active / Inactive</p>
           <label class="switch">
             <input type="checkbox">
             <span class="slider round"></span>
-          </label>
+          </label> -->
           
           <br>
        
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary promocodesubmit">Submit</button>
       </form>
  </div>
-<div>
-    <table class="table">
+<div class="promocodelist">
+
+     <!-- <table class="table">
         <thead class="thead-dark">
           <tr>
             <th scope="col">code</th>
@@ -233,7 +234,6 @@ input:checked + .table-slider:before {
             <th scope="col">Off</th>
             <th scope="col">Type</th>
             <th scope="col">Status</th>
-            <th scope="col">Access to</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -244,15 +244,14 @@ input:checked + .table-slider:before {
             <td>200/-</td>
             <td>Price</td>
             <td>Active</td>
-            <td>All</td>
             <td> <label class="switch table-switch">
                 <input type="checkbox">
                 <span class="slider round table-slider table-round"></span>
               </label></td>
           </tr>
         </tbody>
-      </table>
-      
+      </table> 
+   -->
    
 </div>
  
@@ -455,13 +454,28 @@ function w3_close() {
 }
 </script>
 
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-storage.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+
+
+
 </body>
 </html>
 <!-- partial -->
-  <script  src="./script.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+<script src="scripts/firebaseauth.js"></script>
+<script src="scripts/promocode.js"></script>
+<script src="scripts/index.js"></script>
 
 </body>
 </html>

@@ -102,12 +102,15 @@ img {
   </header>
 
   <div class="upload-btn">
-      <input type="file">
-      <input type="button" value="submit">
+
+      <label for="adharfront">upload new slider</label>
+      <input type="file" class="form-control adharfront" id="adharfront"  placeholder="front" required>
+      <progress value="0" max="100" id="uploaderf">0%</progress>
+
   </div>
 
  <div class="image-div">
-     <div>
+     <!-- <div>
          
         <img src="1.jpg" alt="alt">
         <p class="close">x</p>
@@ -135,7 +138,7 @@ img {
      <div>
         <img src="1.jpg" alt="alt">
         <p class="close">x</p>
-     </div>
+     </div> -->
      
     
  </div>
@@ -337,11 +340,26 @@ function w3_close() {
     overlayBg.style.display = "none";
 }
 </script>
+</script>
 
-</body>
-</html>
-<!-- partial -->
-  <script  src="./script.js"></script>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-storage.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+
+
+<script src="scripts/firebaseauth.js"></script>
+<script src="scripts/auth.js"></script>
+<script src="scripts/index.js"></script>
+
+
+
+
 
 </body>
 </html>
