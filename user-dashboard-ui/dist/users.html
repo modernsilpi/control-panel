@@ -123,7 +123,40 @@ input:checked + .table-slider:before {
 <!-- Top container -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
   <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <span class="w3-bar-item w3-left loginbtn">login</span>
+  <span class="w3-bar-item w3-left logoutbtn">logout</span>
   <span class="w3-bar-item w3-right">My Dashboard</span>
+</div>
+
+<!-- login form details -->
+<div class="back-layer2">
+  <div class="close">
+    <span class="close-btn">X</span>
+  </div>
+  <section class="login-form">
+    <form>
+      
+      <div class="form-group">
+        <div class="form-group">
+          <label for="exampleInputPassword1">Phone number</label>
+          <input type="text" class="form-control lphonenumber " id="exampleInputPassword2" placeholder="Your phone number" required>
+          <button type="button" class="btn btn-light lgenerateotp" >Send OTP</button>
+        </div>
+       
+       
+        <div class="form-group">
+          <label for="exampleInputPassword1">Validation</label>
+          <input type="password" class="form-control lverificationcode" id="exampleInputPassword12" placeholder="Enter your otp here" required>
+        </div>
+        <button type="button" class="btn btn-light lverifyotp" >Submit</button>
+       
+      </div>
+      <div id="lrecaptcha-container"></div>
+
+     
+    </form>
+  </section>
+       
 </div>
 
 <!-- Sidebar/menu -->
@@ -133,7 +166,7 @@ input:checked + .table-slider:before {
       <img src="/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
     </div> -->
     <div class="w3-col s8 w3-bar">
-      <span>Welcome, <strong>Anoop</strong></span><br>
+      <span>Welcome, <strong class="admin-name">Anoop</strong></span><br>
       <!-- <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a> -->
@@ -147,7 +180,7 @@ input:checked + .table-slider:before {
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <a href="homeslider.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  Home Sliders</a>
     <a href="index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Overview</a>
-    <a href=" " class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Users</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Users</a>
     <a href="category.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-camera fa-fw"></i>  Category</a>
     <a href="products.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Products</a>
     <a href="bookings.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-ticket fa-fw"></i>  Bookings</a>
@@ -168,9 +201,9 @@ input:checked + .table-slider:before {
   <header class="w3-container" style="padding-top:22px">
     <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
   </header>
-
-  <table class="table">
-    <thead class="thead-dark">
+<div class="usersmain">
+<table class="table">
+      <thead class="thead-dark">
       <tr>
         <th scope="col">Name</th>
         <th scope="col">mobile</th>
@@ -179,8 +212,8 @@ input:checked + .table-slider:before {
         <th scope="col">Action</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
+    <tbody  class="userslist">
+      <!-- <tr>
         <td>Hemanth</td>
         <td>9502831877</td>
         <td>gopalapatnam</td>
@@ -189,10 +222,11 @@ input:checked + .table-slider:before {
           <input type="checkbox">
           <span class="slider round table-slider table-round"></span>
         </label></td>
-      </tr>
+      </tr> -->
+
     </tbody>
   </table>
-  
+</div>
   <!-- <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-third">
@@ -395,10 +429,19 @@ function w3_close() {
 </body>
 </html>
 <!-- partial -->
-  <script  src="./script.js"></script>
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+<script src="scripts/firebaseauth.js"></script>
+<script src="scripts/login.js"></script>
+<script src="scripts/user.js"></script>
 
 </body>
 </html>

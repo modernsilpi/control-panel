@@ -134,7 +134,39 @@ input:checked + .table-slider:before {
 <!-- Top container -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
   <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <span class="w3-bar-item w3-left loginbtn">login</span>
+  <span class="w3-bar-item w3-left logoutbtn">logout</span>
   <span class="w3-bar-item w3-right">My Dashboard</span>
+</div>
+<!-- login form details -->
+<div class="back-layer2">
+  <div class="close">
+    <span class="close-btn">X</span>
+  </div>
+  <section class="login-form">
+    <form>
+      
+      <div class="form-group">
+        <div class="form-group">
+          <label for="exampleInputPassword1">Phone number</label>
+          <input type="text" class="form-control lphonenumber " id="exampleInputPassword2" placeholder="Your phone number" required>
+          <button type="button" class="btn btn-light lgenerateotp" >Send OTP</button>
+        </div>
+       
+       
+        <div class="form-group">
+          <label for="exampleInputPassword1">Validation</label>
+          <input type="password" class="form-control lverificationcode" id="exampleInputPassword12" placeholder="Enter your otp here" required>
+        </div>
+        <button type="button" class="btn btn-light lverifyotp" >Submit</button>
+       
+      </div>
+      <div id="lrecaptcha-container"></div>
+
+     
+    </form>
+  </section>
+       
 </div>
 
 <!-- Sidebar/menu -->
@@ -144,7 +176,7 @@ input:checked + .table-slider:before {
       <img src="/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
     </div> -->
     <div class="w3-col s8 w3-bar">
-      <span>Welcome, <strong>Anoop</strong></span><br>
+      <span>Welcome, <strong class="admin-name">Anoop</strong></span><br>
       <!-- <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a> -->
@@ -162,7 +194,7 @@ input:checked + .table-slider:before {
     <a href="category.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-camera fa-fw"></i>  Category</a>
     <a href="products.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Products</a>
     <a href="bookings.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-ticket fa-fw"></i>  Bookings</a>
-    <a href=" " class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-tags fa-fw"></i>  Promocode</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-tags fa-fw"></i>  Promocode</a>
     <a href="notifications.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  Notifications</a>
     <br><br>
   </div>
@@ -190,7 +222,7 @@ input:checked + .table-slider:before {
 
         <label class="my-1 mr-2" for="inlineFormCustomSelectPref">access to</label><br>
         <select class="custom-select my-1 mr-sm-2" id="access" required>
-          <option selected>Choose...</option>
+          <option value="choose">Choose...</option>
           <option value="all">All users</option>
           <option value="new">New users only</option>
           </select><br>
@@ -500,8 +532,8 @@ function w3_close() {
 
 
 <script src="scripts/firebaseauth.js"></script>
+<script src="scripts/login.js"></script>
 <script src="scripts/promocode.js"></script>
-<script src="scripts/index.js"></script>
 
 </body>
 </html>

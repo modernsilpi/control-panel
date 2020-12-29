@@ -109,25 +109,58 @@ function makeapromo(){
     }).catch(err=>{console.log(err)})
 }
 
+//none block priority
+const access=document.querySelector('.access');
+document.querySelector('.promocode-access').style.display="none";
+var prio=0;
+access.addEventListener('click',(e)=>{
+    if(prio==0){
+       document.querySelector('.promocode-access').style.display="block";
+        prio=1;
+    }
+    else{
+        document.querySelector('.promocode-access').style.display="none";
+        prio=0;
+    }
+    
+})
+
+
 //access to (priority) promo codes
 function accessto(){
-    const access=document.querySelector('#access').value
-    // if(access=="all"){
+    let accesss=document.querySelector('#access').value
+    console.log(accesss); 
+    if(accesss==="all"){
+        db.collection('users').get().then(snap=>{
+            snap.forEach(nap=>{
+                console.log(nap.id);
+                eligible(nap.id,"eligible");
+                document.querySelector('.promocode-access').style.display="none";
 
-    // }
-    console.log(access)
+            })
+
+    })}
+    else if(accesss==="new")
+    {
+        db.collection('users').get().then(snap=>{
+            snap.forEach(nap=>{
+                console.log(nap.id);
+                eligible(nap.id,"ineligible");
+                document.querySelector('.promocode-access').style.display="none";
+
+            })
+
+    })
+    }
+    else{ 
+        alert("please select correct option");
+    }
+}
+function eligible(id,state){
+    db.collection('users').doc(id).collection('profile').doc(id).update({
+        promocode:state
+    })
 }
 
-// const newpromo=document.querySelector('.promocodesubmit')
-// newpromo.addEventListener('submit',(e)=>{
-//     e.preventDefault();
-//     console.log("new promo")
-//     const code=document.querySelector('#promocode').value;
-//     const cutoff=document.querySelector('#cutoff').value;
-//     const type=document.querySelector('#type').value;
-//     const amount=document.querySelector('#amount').value;
-//     const status=document.querySelector('#status').value;
 
-//     console.log(code,cutoff,type,amount,status);
 
-// })

@@ -42,8 +42,42 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <!-- Top container -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
   <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <span class="w3-bar-item w3-left loginbtn">login</span>
+  <span class="w3-bar-item w3-left logoutbtn">logout</span>
   <span class="w3-bar-item w3-right">My Dashboard</span>
 </div>
+
+<!-- login form details -->
+<div class="back-layer2">
+  <div class="close">
+    <span class="close-btn">X</span>
+  </div>
+  <section class="login-form">
+    <form>
+      
+      <div class="form-group">
+        <div class="form-group">
+          <label for="exampleInputPassword1">Phone number</label>
+          <input type="text" class="form-control lphonenumber " id="exampleInputPassword2" placeholder="Your phone number" required>
+          <button type="button" class="btn btn-light lgenerateotp" >Send OTP</button>
+        </div>
+       
+       
+        <div class="form-group">
+          <label for="exampleInputPassword1">Validation</label>
+          <input type="password" class="form-control lverificationcode" id="exampleInputPassword12" placeholder="Enter your otp here" required>
+        </div>
+        <button type="button" class="btn btn-light lverifyotp" >Submit</button>
+       
+      </div>
+      <div id="lrecaptcha-container"></div>
+
+     
+    </form>
+  </section>
+       
+</div>
+
 
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
@@ -52,7 +86,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       <img src="/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
     </div> -->
     <div class="w3-col s8 w3-bar">
-      <span>Welcome, <strong>Anoop</strong></span><br>
+      <span>Welcome, <strong class="admin-name">Anoop</strong></span><br>
       <!-- <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a> -->
@@ -90,29 +124,34 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <h3 class="text-center">Categories</h3>
   <div class="category-input">
-      <input type="text" class="form-control">
-      <input type="button" class="btn btn-primary" value="submit">
+      <input type="text" class="form-control createinput">
+      <input type="button" class="btn btn-primary createbtn" value="submitt">
       
   </div>
 
   <div class="category-buttons">
-      <div>
+      <!-- <div>
         <button class="btn btn-dark">cameras</button>
         <a class="btn btn-success">Add</a>
-        <a class="btn btn-danger">X</a>
+        <a class="btn btn-danger">X</a> -->
 
-        <div>
+        <!-- <div>
             <input type="text" class="form-control">
             <input type="button" class="btn btn-success" value="submit">
-        </div>
+        </div> -->
 
-        <div>
+        <!-- <div>
            <p>nikon</p>
            <p>canon</p>
         </div>
-      </div>
+      </div> -->
 
-      <div>
+      <!-- <div>
+        <button class="btn btn-dark">cameras</button>
+        <a class="btn btn-danger">X</a>
+      </div> -->
+
+      <!-- <div>
         <button class="btn btn-dark">cameras</button>
         <a class="btn btn-danger">X</a>
       </div>
@@ -125,12 +164,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       <div>
         <button class="btn btn-dark">cameras</button>
         <a class="btn btn-danger">X</a>
-      </div>
-
-      <div>
-        <button class="btn btn-dark">cameras</button>
-        <a class="btn btn-danger">X</a>
-      </div>
+      </div> -->
    
   </div>
 
@@ -348,8 +382,9 @@ function w3_close() {
 
 
 <script src="scripts/firebaseauth.js"></script>
-<script src="scripts/auth.js"></script>
-<script src="scripts/index.js"></script>
+<script src="scripts/login.js"></script>
+<script src="scripts/category.js"></script>
+
 
 </body>
 </html>
