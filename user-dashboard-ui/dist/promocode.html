@@ -123,7 +123,10 @@ input:checked + .table-slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-
+.accessdiv{
+  width: 700px;
+  float: right;
+}
 
 </style>
 <body class="w3-light-grey">
@@ -176,10 +179,33 @@ input:checked + .table-slider:before {
   <header class="w3-container" style="padding-top:22px">
     <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
   </header>
-
+<div class="accessdiv">
  <div>
-     <a class="btn btn-success createpromo">Add</a>
+     <a class="btn btn-success access">priority</a>
  </div>
+
+ <div class="promocode-access">
+  <form onsubmit="accessto();return false">
+
+
+        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">access to</label><br>
+        <select class="custom-select my-1 mr-sm-2" id="access" required>
+          <option selected>Choose...</option>
+          <option value="all">All users</option>
+          <option value="new">New users only</option>
+          </select><br>
+
+        
+        <br>
+     
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</div>
+
+<div>
+  <a class="btn btn-success createpromo">New promo</a>
+</div>
 
  <div class="promocode-form">
     <form onsubmit="makeapromo();return false">

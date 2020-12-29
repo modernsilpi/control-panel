@@ -109,6 +109,15 @@ function makeapromo(){
     }).catch(err=>{console.log(err)})
 }
 
+//access to (priority) promo codes
+function accessto(){
+    const access=document.querySelector('#access').value
+    // if(access=="all"){
+
+    // }
+    console.log(access)
+}
+
 // const newpromo=document.querySelector('.promocodesubmit')
 // newpromo.addEventListener('submit',(e)=>{
 //     e.preventDefault();
