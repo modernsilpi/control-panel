@@ -43,14 +43,92 @@ bookdb.onSnapshot(snap=>{
            <span class="helper"></span>
            <div>
                <div class="popupCloseButton" id="x${nap.id}">&times;</div>
-               <p><b>name</b>:${user.buyername}</p>
-               <p><b>phone</b>:${user.buyerphone}</p>
-               <p><b>location</b>:${user.buyerlocation}</p>
-               <p><b>name</b>:${user.paymentstatus}</p>
+               <p><b>name</b>:  ${user.buyername}</p>
+               <p><b>phone</b>:  ${user.buyerphone}</p>
+               <p><b>location</b>:  ${user.buyerlocation}</p>
+               <p><b>payment status</b>:  ${user.paymentstatus}</p>
+               <p><b>order id</b>:  ${user.orderid}</p>
+               <p><b>payment id</b>:  ${user.paymentid}</p>
+               <p><b>pickup date</b>:  ${user.pickupdate}</p>
+               <p><b>return date</b>:  ${user.returndate}</p>
+               <p><b>payment At</b>:  ${user.paymentAt}</p>
+               <p><b>promocode</b>:  ${user.promocode}</p>
+               <h4><b>totalprice</b>:  ${user.totalprice}</p>
+               <div id="p${nap.id}"></div>
            </div>
        </div>
                `;
+
                popfield.append(div2)
+               const productfield=document.getElementById(`p${nap.id}`)
+               if(user.products.length>4){
+                for(var i=0;i<user.products.length;i=i+4){
+                  const div=document.createElement('div')
+                  div.setAttribute('class',"my-orders")
+                  var li=`     
+                    
+                  <div class="order-pic">
+                    <div class="order-pic2">
+                      <div>
+                        <img src="${user.products[i+3]}" alt="" width="350" height="150">
+                      </div>
+                    
+                  <div>
+                    <h5> ${user.products[i+0]}</h5>
+                 
+                    <p><span>Qty: </span>&nbsp; ${user.products[i+1]}</p>
+                    <p><span>Price:</span>&nbsp; ${user.products[i+2]}</p>
+                
+                    
+                  </div>
+                     
+                   
+                      
+                  
+                    </div>
+                   
+                    </div>
+                   
+                 
+                  `;
+                div.innerHTML=li
+                productfield.append(div)
+                
+                }
+              }
+              else{
+                const div=document.createElement('div')
+                div.setAttribute('class',"my-orders")
+                var li=`     
+                  
+                <div class="order-pic">
+                  <div class="order-pic2">
+                    <div>
+                      <img src="${user.products[3]}" alt="" width="350" height="150">
+                    </div>
+                  
+                <div>
+                  <h5> ${user.products[0]}</h5>
+               
+                  <p><span>Qty: </span>&nbsp; ${user.products[1]}</p>
+                  <p><span>Price:</span>&nbsp; ${user.products[2]}</p>
+              
+                  
+                </div>
+                   
+                 
+                    
+                
+                  </div>
+                 
+                  </div>
+                `;
+              div.innerHTML=li
+              productfield.append(div)
+              
+              }
+            
+            
        
                //user full details
                const full=document.querySelector(`#f${nap.id}`);
