@@ -5,6 +5,10 @@ const promo=document.querySelector('.promocodelist')
 db.collection('promocodes').onSnapshot(snap=>{
     promo.innerHTML="";
     snap.docs.forEach(nap=>{
+        var statee="unchecked";
+        if(nap.data().status==="active"){
+            statee="checked";
+        }
         const div=document.createElement('div');
         console.log(nap.id)
         div.innerHTML=`
@@ -27,8 +31,11 @@ db.collection('promocodes').onSnapshot(snap=>{
             <td>${nap.data().off}</td>
             <td>${nap.data().type}</td>
             <td>${nap.data().status}</td>
-            <td><button id=${nap.id}>click</button></td>
-            <td><button id=d${nap.id}>click</button></td>
+            <td><label class="switch table-switch">
+            <input id="${nap.id}" type="checkbox" ${statee}>
+            <span class="slider round table-slider table-round"></span>
+          </label></td>
+            <td><button class="btn btn-danger" id=d${nap.id}>delete</button></td>
           </tr>
         </tbody>
       </table> 
