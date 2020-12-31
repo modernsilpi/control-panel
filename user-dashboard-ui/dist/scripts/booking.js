@@ -11,7 +11,7 @@ bookdb.onSnapshot(snap=>{
         let send,recieve="unchecked";
         if(user.send==1)send="checked"
         if(user.recieve==1)recieve="checked"
-        if(user.products.length>4){
+        if(user.products.length>5){
             productname=user.products[0]+"..."
             console.log(productname)
         }
@@ -61,35 +61,24 @@ bookdb.onSnapshot(snap=>{
 
                popfield.append(div2)
                const productfield=document.getElementById(`p${nap.id}`)
-               if(user.products.length>4){
-                for(var i=0;i<user.products.length;i=i+4){
+               if(user.products.length>5){
+                for(var i=0;i<user.products.length;i=i+5){
                   const div=document.createElement('div')
                   div.setAttribute('class',"my-orders")
                   var li=`     
-                    
                   <div class="order-pic">
                     <div class="order-pic2">
                       <div>
                         <img src="${user.products[i+3]}" alt="" width="350" height="150">
                       </div>
-                    
                   <div>
                     <h5> ${user.products[i+0]}</h5>
                  
                     <p><span>Qty: </span>&nbsp; ${user.products[i+1]}</p>
                     <p><span>Price:</span>&nbsp; ${user.products[i+2]}</p>
-                
-                    
-                  </div>
-                     
-                   
-                      
-                  
+                  </div>                 
                     </div>
-                   
-                    </div>
-                   
-                 
+                     </div>
                   `;
                 div.innerHTML=li
                 productfield.append(div)
@@ -162,5 +151,95 @@ bookdb.onSnapshot(snap=>{
             else bookdb.doc(nap.id).update({recieve:1})
             
         })
+        increaseqty(user.orderid,user.products)
     })
+    
 })
+var count=0;
+function increaseqty(id,products){
+  db.collection('orders').doc(id).get().then(snap=>{
+    console.log(snap.data().send)
+    console.log(snap.data().recieve)
+    console.log(snap.data().ordercomplete)
+    if(snap.data().send==1 && snap.data().recieve){
+      if(snap.data().ordercomplete==0){
+      //  console.log(products)
+        for(var i=0; i<products.length;i=i+5){
+          console.log(products[i+4])
+          console.log(products[i+1])
+          minuscart(products[i+4],products[i+1])
+        }
+        updateorder(id);
+      }
+    }
+  })
+  // .then(()=>{
+  //   return db.collection('orders').doc(id).update({
+  //     ordercomplete:1
+  //   })
+
+  // })
+}
+
+function minuscart(productid,qte){
+  db.collection('categorybutton').get().then(id=>{
+    id.docs.forEach(id2=>{
+      for (var name of Object.keys(id2.data())) {
+            // console.log("object keys",Object.keys(id2.data()).length)
+        console.log("path",name);
+        minuscart2(productid,qte,id2,name);
+    }
+    })
+  })
+
+}
+
+function minuscart2(productid,qte,id2,name){
+
+  db.collection('categorybutton').doc(id2.id).collection(name).get().then(snapp=>{
+    console.log("category is",name)
+   snapp.docs.forEach(pan=>{
+     if(pan.id==productid){
+     
+      db.collection('categorybutton').doc(id2.id).collection(name).doc(pan.id).update({
+        qty:firebase.firestore.FieldValue.increment(qte)
+      }).then(()=>{
+        console.log("increased")
+      })
+
+     }
+   })
+
+  })
+  
+}
+
+
+function advancedsearch(productid,qtu){
+  db.collection('categorybutton').get().then(id=>{
+    id.docs.forEach(id2=>{
+      for (var name of Object.keys(id2.data())) {
+        console.log("object keys",Object.keys(id2.data()).length)
+        console.log("path",id2.id,name)
+        db.collection('categorybutton').doc(id2.id).collection(name).get().then(snapp=>{
+         snapp.docs.forEach(pan=>{
+           if(pan.id==productid){
+             console.log("increased")
+            db.collection('categorybutton').doc(id2.id).collection(name).doc(pan.id).update({
+              qty:firebase.firestore.FieldValue.increment(qtu)
+            })
+           }
+         })
+    
+        });
+    }
+    })
+  })
+}
+function updateorder(id){
+  db.collection('orders').doc(id).update({
+    ordercomplete:1
+  }).then(()=>{
+    console.log("updating")
+  })
+}
