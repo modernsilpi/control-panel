@@ -21,7 +21,7 @@ bookdb.onSnapshot(snap=>{
         <td id="f${nap.id}">${user.buyername}</td>
         <td>${user.buyerphone}</td>
         <td>${user.buyerlocation}</td>
-        <td><b>${productname}</b></td>
+        <td id="f${nap.id}"><b>${productname}</b></td>
         <td>${user.paymentstatus}</td>
         <td>${user.totalprice}</td>
         <td><label class="switch table-switch">
@@ -132,8 +132,8 @@ bookdb.onSnapshot(snap=>{
        
                //user full details
                const full=document.querySelector(`#f${nap.id}`);
-               console.log(`da${nap.id}`)
-               full.addEventListener('click',(e)=>{
+            //   console.log(`da${nap.id}`)
+               full.addEventListener("click",(e)=>{
                    e.preventDefault();
                    document.querySelector(`#da${nap.id}`).style.display="block";
        

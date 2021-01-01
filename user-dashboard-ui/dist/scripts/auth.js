@@ -1,6 +1,7 @@
 
 
 
+
 //home sliders
 const homesliders=document.querySelector('.image-div')
 db.collection('homesliders').onSnapshot(snap=>{
