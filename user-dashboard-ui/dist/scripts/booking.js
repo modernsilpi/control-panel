@@ -55,12 +55,17 @@ bookdb.onSnapshot(snap=>{
                <p><b>promocode</b>:  ${user.promocode}</p>
                <h4><b>totalprice</b>:  ${user.totalprice}</p>
                <div id="p${nap.id}"></div>
+               <div id="adhar${nap.id}"</div>
+
            </div>
        </div>
                `;
 
                popfield.append(div2)
+
+
                const productfield=document.getElementById(`p${nap.id}`)
+               productfield.innerHTML='';
                if(user.products.length>5){
                 for(var i=0;i<user.products.length;i=i+5){
                   const div=document.createElement('div')
@@ -98,16 +103,9 @@ bookdb.onSnapshot(snap=>{
                   
                 <div>
                   <h5> ${user.products[0]}</h5>
-               
                   <p><span>Qty: </span>&nbsp; ${user.products[1]}</p>
                   <p><span>Price:</span>&nbsp; ${user.products[2]}</p>
-              
-                  
-                </div>
-                   
-                 
-                    
-                
+                </div>        
                   </div>
                  
                   </div>
@@ -116,6 +114,19 @@ bookdb.onSnapshot(snap=>{
               productfield.append(div)
               
               }
+
+              const adharfield=document.querySelector(`#adhar${nap.id}`);
+              adharfield.innerHTML='';
+              const adhardiv=document.createElement('div')
+              db.collection('users').doc(user.buyerid).collection('profile').doc(user.buyerid).get().then(snap=>{
+                adhardiv.innerHTML=`
+                <p><b>adhar front</b></p>
+                <img src="${snap.data().adharfront}" alt="" width="800" height="400">
+                <p><b>adhar back</b></p>
+                <img src="${snap.data().adharback}" alt="" width="800" height="400">
+                `;
+                adharfield.append(adhardiv);
+              })
             
             
        
@@ -155,7 +166,7 @@ bookdb.onSnapshot(snap=>{
     })
     
 })
-var count=0;
+
 function increaseqty(id,products){
   db.collection('orders').doc(id).get().then(snap=>{
     console.log(snap.data().send)
@@ -163,7 +174,6 @@ function increaseqty(id,products){
     console.log(snap.data().ordercomplete)
     if(snap.data().send==1 && snap.data().recieve){
       if(snap.data().ordercomplete==0){
-      //  console.log(products)
         for(var i=0; i<products.length;i=i+5){
           console.log(products[i+4])
           console.log(products[i+1])
@@ -173,12 +183,7 @@ function increaseqty(id,products){
       }
     }
   })
-  // .then(()=>{
-  //   return db.collection('orders').doc(id).update({
-  //     ordercomplete:1
-  //   })
 
-  // })
 }
 
 function minuscart(productid,qte){

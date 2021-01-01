@@ -40,14 +40,14 @@ function printusers(id){
     <span class="helper"></span>
     <div>
         <div class="popupCloseButton" id="x${id}">&times;</div>
-        <p><b>name</b>:${snap.data().name}</p>
-        <p><b>name</b>:${snap.data().phone}</p>
-        <p><b>location</b>:${snap.data().location}</p>
-        <p><b>name</b>:${snap.data().status}</p>
-        <p><b>adharfront</b></p>
+        <p><b>Name</b>:${snap.data().name}</p>
+        <p><b>Phone number</b>:${snap.data().phone}</p>
+        <p><b>Location</b>:${snap.data().location}</p>
+        <p><b>Status</b>:${snap.data().status}</p>
+        <p><b>Adhar front</b></p>
         <img src="${snap.data().adharfront}" alt="" width="800" height="400">
        
-        <p><b>adharback</b></p>
+        <p><b>Adhar back</b></p>
         <img src="${snap.data().adharback}" alt="" width="800" height="400">
     </div>
 </div>
@@ -56,7 +56,7 @@ function printusers(id){
 
         //user full details
         const full=document.querySelector(`#f${id}`);
-        console.log(`da${id}`)
+       // console.log(`da${id}`)
         full.addEventListener('click',(e)=>{
             e.preventDefault();
             document.querySelector(`#da${id}`).style.display="block";
