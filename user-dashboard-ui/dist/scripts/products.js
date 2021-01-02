@@ -20,7 +20,7 @@ db.collection('categorybutton').onSnapshot(snap=>{
         const div=document.createElement('div');
         div.innerHTML=`
         <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="main${nap.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="main${nap.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           ${nap.id}
         </button>
         <div class="dropdown-menu" id="sub${nap.id}" aria-labelledby="dropdownMenuButton">
@@ -199,39 +199,154 @@ adharfront.addEventListener('change',(e)=>{
 
 })
 
-//edit and save product here
-function editandsave(pid){
+//edit product here
+function editandsave(productid){
     const model2=document.getElementById('model2')
     const qty2=document.getElementById('qty2')
     const price2=document.getElementById('price2')
-    let productdb=db.collection('categorybutton')
-    productdb.get().then(tap=>{
-        tap.forEach(main=>{
-            productdb.doc(main.id).get().then(snap=>{
-                for (var name of Object.keys(snap.data())) {
-                    console.log(name)
-                    productdb.doc(main.id).collection(name).get().then(nap=>{
-                     
-                        nap.forEach(cap=>{
-                            if(cap.id==pid){
-                                productdb.doc(main.id).collection(name).doc(cap.id).get().then(pup=>{
-                                    console.log(pup.data())
-                                    model2.setAttribute("value",pup.data().name)
-                                    qty2.setAttribute("value",pup.data().qty)
-                                    price2.setAttribute("value",pup.data().price)
-                                })
-                     
-                            }
-        
-                        })
-                       
-                    })
-                }
+    db.collection('categorybutton').get().then(id=>{
+      id.docs.forEach(id2=>{
+        for (var name of Object.keys(id2.data())) {
+              // console.log("object keys",Object.keys(id2.data()).length)
+          console.log("path",name);
+          saveandedit2(productid,id2,name);
+      }
+      })
+    })
+  
+  }
+
+  
+  function saveandedit2(pid,id2,name){
+    const model2=document.getElementById('model2')
+    const qty2=document.getElementById('qty2')
+    const price2=document.getElementById('price2')
+    const editpro=document.querySelector('.editpro')
+    db.collection('categorybutton').doc(id2.id).collection(name).get().then(snapp=>{
+      console.log("category is",name)
+     snapp.docs.forEach(cap=>{
+        if(cap.id==pid){
+            db.collection('categorybutton').doc(id2.id).collection(name).doc(cap.id).get().then(pup=>{
+                console.log(pup.data())
+                editpro.setAttribute("id",pup.id)
+                model2.setAttribute("value",pup.data().name)
+                qty2.setAttribute("value",pup.data().qty)
+                price2.setAttribute("value",pup.data().price)
             })
-        })
+ 
+        }
+     })
 
     })
+    
+  }
+
+
+
+//save edited product here
+function editproduct(){
+    let id=document.querySelector('.editpro').getAttribute('id')
+    console.log(id)
+    editproduct2(id)
 }
+function editproduct2(productid){
+    db.collection('categorybutton').get().then(id=>{
+      id.docs.forEach(id2=>{
+        for (var name of Object.keys(id2.data())) {
+              // console.log("object keys",Object.keys(id2.data()).length)
+          console.log("path",name);
+          editproduct3(productid,id2,name);
+      }
+      })
+    })
+  
+  }
+
+  
+  function editproduct3(productid,id2,name){
+    let name2=document.getElementById('model2')
+    let price2=document.getElementById('price2')
+    let qty2=document.getElementById('qty2')
+    let photo2=productlink2;
+    db.collection('categorybutton').doc(id2.id).collection(name).get().then(snapp=>{
+      console.log("category is",name)
+     snapp.docs.forEach(pan=>{
+       if(pan.id==productid){
+        db.collection('categorybutton').doc(id2.id).collection(name).doc(productid).update({
+            name:name2.value,
+            price:price2.value,
+            qty:qty2.value,
+            link:photo2
+        }).then(()=>{
+            name2.value='';
+            price2.value='';
+            qty2.value='';
+            document.querySelector('#uploaderf2').value=0;
+            document.querySelector('.productdiv2').style.display="none";
+            alert("edited")
+        })
+
+       }
+     })
+
+    })
+    
+  }
+
+// edit pic uploading 
+var productlink2;
+const adharfront2=document.querySelector('.adharfront2')
+adharfront2.addEventListener('change',(e)=>{
+    var file=e.target.files[0];
+    console.log("adhar click2")
+    uploaderf2=document.querySelector('#uploaderf2');
+   // crate storage ref
+  var storageref=storage.ref(`photo/` + file.name);
+
+     //upload file
+   var task=storageref.put(file);
+
+      //update progress bar
+  task.on('state_changed',
+  function progress(snapshot){
+    var percentage=(snapshot.bytesTransferred / snapshot.totalBytes)*100;
+    uploaderf2.value=percentage;
+  },
+    function error(err){
+    console.log(err)
+  },
+  function complete(){
+  console.log("adhar front uploaded successfully")
+  task.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+    console.log('File available at', downloadURL);
+    productlink2=downloadURL
+  });
+}
+  );
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //find product and delete
@@ -265,7 +380,7 @@ function findtodelete(productid){
   }
 
 
-//append all product to when refresh
+//append all product when refresh
 let productdbc=db.collection('categorybutton')
 productdbc.onSnapshot(tap=>{
     tap.forEach(main=>{
@@ -283,4 +398,24 @@ productdbc.onSnapshot(tap=>{
         })
     })
 
+})
+
+const allcategories=document.querySelector('.allcategories')
+allcategories.addEventListener('click',(e)=>{
+    e.preventDefault();
+    unique.innerHTML='';
+    let productdbc=db.collection('categorybutton')
+productdbc.onSnapshot(tap=>{
+    tap.forEach(main=>{
+        productdbc.doc(main.id).onSnapshot(snap=>{
+            for (var name of Object.keys(snap.data())) {
+                console.log(name)
+                productdbc.doc(main.id).collection(name).get().then(nap=>{
+                    append1(nap)
+                })
+            }
+        })
+    })
+
+})
 })
