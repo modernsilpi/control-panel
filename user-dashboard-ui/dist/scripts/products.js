@@ -232,6 +232,7 @@ function editandsave(productid){
                 model2.setAttribute("value",pup.data().name)
                 qty2.setAttribute("value",pup.data().qty)
                 price2.setAttribute("value",pup.data().price)
+                productlink2=pup.data().link
             })
  
         }

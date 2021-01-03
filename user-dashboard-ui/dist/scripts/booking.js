@@ -4,7 +4,7 @@ const popfield=document.querySelector('.popfield');
 const bookdb=db.collection('orders')
 bookdb.onSnapshot(snap=>{
     orders.innerHTML='';
-    snap.docs.forEach(nap=>{
+    snap.docs.slice().reverse().forEach(nap=>{
         console.log(nap.data())
         let user=nap.data();
         let productname;
@@ -51,7 +51,8 @@ bookdb.onSnapshot(snap=>{
                <p><b>payment id</b>:  ${user.paymentid}</p>
                <p><b>pickup date</b>:  ${user.pickupdate}</p>
                <p><b>return date</b>:  ${user.returndate}</p>
-               <p><b>payment At</b>:  ${user.paymentAt}</p>
+               <p><b>Date of payment</b>:  ${user.dateofpay}</p>
+               <p><b>Time of payment</b>:  ${user.timeofpay}</p>
                <p><b>promocode</b>:  ${user.promocode}</p>
                <h4><b>totalprice</b>:  ${user.totalprice}</p>
                <div id="p${nap.id}"></div>
