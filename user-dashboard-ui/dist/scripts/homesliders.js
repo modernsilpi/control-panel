@@ -79,4 +79,21 @@ adharfront.addEventListener('change',(e)=>{
 
 })
 
+//terms and conditions adding here
+termssubmit=document.getElementById('termssubmit')
+termssubmit.addEventListener('click',(e)=>{
+  e.preventDefault();
+  let terms=document.getElementById('termsarea')
+  db.collection('termsandconditions').doc('terms').update({
+    terms:terms.value
+  }).then(()=>{
+    alert("terms added successfully");
+  })
+})
 
+
+//getting terms and conditons hrer
+db.collection('termsandconditions').doc('terms').onSnapshot(snap=>{
+  console.log(snap.data().terms)
+  document.getElementById('termsarea').value=snap.data().terms
+})
