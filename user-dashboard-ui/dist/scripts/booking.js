@@ -1,16 +1,24 @@
 const orders=document.querySelector('.orders')
 const popfield=document.querySelector('.popfield');
 
+var sl=0;
 const bookdb=db.collection('orders')
 bookdb.onSnapshot(snap=>{
     orders.innerHTML='';
+    sl=0;
     snap.docs.slice().reverse().forEach(nap=>{
-        console.log(nap.data())
+      sl+=1;
+      //  console.log(nap.data())
         let user=nap.data();
         let productname;
+        let timeofpay=user.timeofpay
+      // timeofpay=timeofpay.slice(0, -31)
+      timeofpay=timeofpay.replace('GMT+0530 (India Standard Time)', '');
         let send,recieve="unchecked";
+        let calas="secondary",vale="Pending......."
         if(user.send==1)send="checked"
         if(user.recieve==1)recieve="checked"
+        if(user.ordercomplete==1)calas="success",vale="Completed"
         if(user.products.length>5){
             productname=user.products[0]+"..."
             console.log(productname)
@@ -18,12 +26,14 @@ bookdb.onSnapshot(snap=>{
         else productname=user.products[0];
         const tr=document.createElement('tr');
         tr.innerHTML=`
+        <td>${sl}</td>
         <td id="f${nap.id}">${user.buyername}</td>
         <td>${user.buyerphone}</td>
         <td>${user.buyerlocation}</td>
         <td id="f${nap.id}"><b>${productname}</b></td>
         <td>${user.paymentstatus}</td>
         <td>${user.totalprice}</td>
+        <td>${user.dateofpay}<br> ${timeofpay} </td>
         <td><label class="switch table-switch">
           <input id="s${nap.id}" type="checkbox" ${send}>
           <span class="slider round table-slider table-round"></span>
@@ -32,6 +42,8 @@ bookdb.onSnapshot(snap=>{
         <input id="r${nap.id}" type="checkbox" ${recieve}>
         <span class="slider round table-slider table-round"></span>
       </label></td>
+
+      <span class="badge rounded-pill bg-${calas} orderbtn">${vale}</span>
         `;
         orders.append(tr);
 

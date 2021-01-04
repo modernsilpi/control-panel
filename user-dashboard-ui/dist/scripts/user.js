@@ -2,18 +2,20 @@ const userlist=document.querySelector('.userslist');
 const popfield=document.querySelector('.popfield');
 // const usermain=document.querySelector('.usersmain');
 db.collection('users').onSnapshot(snap=>{ 
-   
-    snap.forEach(nap=>{
-      
+    userlist.innerHTML='';
+    sl=0;
+    snap.docs.forEach(nap=>{
+       
       //  console.log(nap.id)
         printusers(nap.id);
     })
 })
-
+var sl=0;
 function printusers(id){
     let userdb=db.collection('users').doc(id).collection('profile').doc(id)
     const div=document.createElement('tr');
     userdb.onSnapshot(snap=>{
+        sl+=1;
         console.log(snap.data())
         var statee="unchecked";
         if(snap.data().status==="active"){
@@ -21,6 +23,7 @@ function printusers(id){
         }
         div.setAttribute('id',id)
         div.innerHTML=` 
+          <td>${sl}</td>
           <td id="f${id}">${snap.data().name}</td>
           <td>${snap.data().phone}</td>
           <td>${snap.data().location}</td>
@@ -42,13 +45,17 @@ function printusers(id){
         <div class="popupCloseButton" id="x${id}">&times;</div>
         <p><b>Name</b>:${snap.data().name}</p>
         <p><b>Phone number</b>:${snap.data().phone}</p>
+        <p><b>Alternative Phone number</b>:${snap.data().altnumber}</p>
+        <p><b>Profession</b>:${snap.data().profession}</p>
         <p><b>Location</b>:${snap.data().location}</p>
         <p><b>Status</b>:${snap.data().status}</p>
-        <p><b>Adhar front</b></p>
+        <h4><b>Adhar front</b></h4>
         <img src="${snap.data().adharfront}" alt="" width="800" height="400">
-       
-        <p><b>Adhar back</b></p>
+        <h4><b>Adhar back</b></h4>
         <img src="${snap.data().adharback}" alt="" width="800" height="400">
+
+        <h4><b>other proofs</b></h4>
+        <img src="${snap.data().otherid}" alt="" width="800" height="400">
     </div>
 </div>
         `;
