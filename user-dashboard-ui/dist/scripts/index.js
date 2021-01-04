@@ -1,4 +1,5 @@
 var d = new Date().toDateString();//today date
+console.log(new Date().getMonth())
 
 //total orders in overview
 var todayord=0;
@@ -18,9 +19,9 @@ db.collection("orders").get().then(snap=>{
       todayorders.innerHTML=todayord;
       //append revenu
       todayrevenue.innerHTML="&#8377;"+trev;
-
+      if(nap.data().month==new Date().getMonth()){
       totalrev+=nap.data().totalprice;
-
+      }
    })
    allorders.innerHTML=snap.docs.length;
 

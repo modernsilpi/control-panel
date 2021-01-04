@@ -97,3 +97,33 @@ db.collection('termsandconditions').doc('terms').onSnapshot(snap=>{
   console.log(snap.data().terms)
   document.getElementById('termsarea').value=snap.data().terms
 })
+
+
+
+
+//about us adding here
+aboutsubmit=document.getElementById('aboutsubmit')
+aboutsubmit.addEventListener('click',(e)=>{
+  e.preventDefault();
+  let about=document.getElementById('aboutarea')
+  db.collection('termsandconditions').doc('about').update({
+    about:about.value
+  }).then(()=>{
+    alert("about us added successfully");
+  })
+})
+
+
+
+
+
+
+
+
+
+
+//getting about us
+db.collection('termsandconditions').doc('about').onSnapshot(snap=>{
+ // console.log(snap.data().terms)
+  document.getElementById('aboutarea').value=snap.data().about
+})
