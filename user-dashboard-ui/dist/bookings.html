@@ -311,12 +311,62 @@ input:checked + .table-slider:before {
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
+    <input type="text" id="searchinput" placeholder="Search by Phone No.">
+    <button type="button" class="btn btn-secondary" id="searchbtn">search</button>
+
+   
+
+    <h5><b><i class="fa fa-dashboard"></i> Bookings</b></h5>
   </header>
 
+<!-- search result -->
+<div class="searchresult">
+<table class="table">
+    
+  <thead class="thead-dark">
+    <h6 style="text-align:center"><b>Search Result</b></h6>
+    <button class="btn btn-dark" style="margin-left: 950px;" id="closesearch">X</button>
+    <tr>
+      <th scope="col">S.NO</th>
+      <th scope="col">Name</th>
+      <th scope="col">mobile</th>
+      <th scope="col">Location</th>
+      <th scope="col">Products</th>
+      <th scope="col">Payment</th>
+      <th scope="col">Amount</th>
+      <th scope="col">date</th>
+      <th scope="col">send</th>
+      <th scope="col">recieved</th>
+      <th scope="col">order</th>
+    </tr>
+  </thead>
+  <tbody class="orders3">
+  </tbody>
+</table>
 
+<div class="popfield3"></div>
+
+</div>
+<script>
+   document.querySelector('.searchresult').style.display="none"
+   //none search result
+document.querySelector('#closesearch').addEventListener('click',(e)=>{
+  document.querySelector('.searchresult').style.display="none"
+  document.querySelector('#searchinput').value='';
+
+})
+//show search result
+document.querySelector('#searchbtn').addEventListener('click',(e)=>{
+  document.querySelector('.searchresult').style.display="block"
+  
+})
+</script>
+
+<!-- today bookings -->
   <table class="table">
+    
     <thead class="thead-dark">
+      <h6 style="text-align:center"><b>Today Boookings</b></h6>
       <tr>
         <th scope="col">S.NO</th>
         <th scope="col">Name</th>
@@ -366,6 +416,7 @@ input:checked + .table-slider:before {
 
 
   <table class="table">
+    <h6 style="text-align:center"><b>All Boookings</b></h6>
     <thead class="thead-dark">
       <tr>
         <th scope="col">S.NO</th>

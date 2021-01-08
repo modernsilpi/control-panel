@@ -49,6 +49,9 @@ function printusers(id){
         <p><b>Profession</b>:${snap.data().profession}</p>
         <p><b>Location</b>:${snap.data().location}</p>
         <p><b>Status</b>:${snap.data().status}</p>
+        <h4><b>profile pic</b></h4>
+        <img src="${snap.data().profilepic}" alt="" width="500" height="200">
+
         <h4><b>Adhar front</b></h4>
         <img src="${snap.data().adharfront}" alt="" width="800" height="400">
         <h4><b>Adhar back</b></h4>
