@@ -8,7 +8,7 @@ const popfield2=document.querySelector('.popfield2');
 //today orders here
 var sl2=0;
 const bookdb2=db.collection('orders')
-bookdb2.onSnapshot(snap=>{
+bookdb2.orderBy("timestamp", "desc").onSnapshot(snap=>{
     orders2.innerHTML='';
     sl2=0;
     snap.docs.forEach(nap=>{
@@ -41,6 +41,7 @@ bookdb2.onSnapshot(snap=>{
         <td>${user.paymentstatus}</td>
         <td>${user.totalprice}</td>
         <td>${user.dateofpay}<br> ${timeofpay} </td>
+        <td>${user.pickupdate}</td>
         <td><label class="switch table-switch">
           <input id="s${nap.id}" type="checkbox" ${send}>
           <span class="slider round table-slider table-round"></span>
@@ -202,7 +203,7 @@ bookdb2.onSnapshot(snap=>{
 
 var sl=0;
 const bookdb=db.collection('orders')
-bookdb.onSnapshot(snap=>{
+bookdb.orderBy("timestamp", "desc").onSnapshot(snap=>{
     orders.innerHTML='';
     sl=0;
     snap.docs.forEach(nap=>{
@@ -233,6 +234,7 @@ bookdb.onSnapshot(snap=>{
         <td>${user.paymentstatus}</td>
         <td>${user.totalprice}</td>
         <td>${user.dateofpay}<br> ${timeofpay} </td>
+        <td>${user.pickupdate}</td>
         <td><label class="switch table-switch">
           <input id="s${nap.id}" type="checkbox" ${send}>
           <span class="slider round table-slider table-round"></span>
@@ -464,7 +466,12 @@ function updateorder(id){
 
 
 
-
+const findbydate=document.getElementById('findbydate')
+findbydate.addEventListener('change',(e)=>{
+  const sdate=new Date(findbydate.value).toDateString()
+  console.log(sdate)
+  finding("dateofpay",sdate)
+})
 
 
 
@@ -476,16 +483,69 @@ const popfield3=document.querySelector('.popfield3');
 var sl3=0;
 searchbtn.addEventListener('click',(e)=>{
   const searchinput=document.querySelector('#searchinput')
-  // Create a reference to the cities collection
 var citiesRef = db.collection("orders");
 
-orders3.innerHTML='';
-popfield3.innerHTML='';
 sl3=0;
+finding("buyerphone",searchinput.value)
 
+})
+
+
+function formatDate(date) {
+  var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+  if (month.length < 2) 
+      month = '0' + month;
+  if (day.length < 2) 
+      day = '0' + day;
+
+  return [year, month, day].join('-');
+}
+
+//get today pickups here
+const todaypicks=document.getElementById('todaypicks')
+todaypicks.addEventListener('click',(e)=>{
+  sl3=0;
+  let pickupdate=formatDate(new Date().toDateString())
+  finding("pickupdate",pickupdate)
+
+})
+todaypicks.addEventListener('change',(e)=>{
+  sl3=0;
+  
+  let pickupdate=formatDate(new Date(formatDate(todaypicks.value)).toDateString())
+  finding("pickupdate",pickupdate)
+
+})
+
+//get today returns here
+const todayreturns=document.getElementById('todayreturns')
+todayreturns.addEventListener('click',(e)=>{
+  sl3=0;
+  let returndate=formatDate(new Date().toDateString())
+  finding("returndate",returndate)
+})
+
+todayreturns.addEventListener('change',(e)=>{
+  sl3=0;
+  
+  let returndate=formatDate(new Date(formatDate(todayreturns.value)).toDateString())
+  finding("returndate",returndate)
+
+})
+
+
+function finding(input1,input2){
+  orders3.innerHTML='';
+popfield3.innerHTML='';
+  document.querySelector('.searchresult').style.display="block"
+  var citiesRef = db.collection("orders");
 // Create a query against the collection.
-var query = citiesRef.where("buyerphone", "==", searchinput.value);
-query.get().then(snap=>{
+var query = citiesRef.where(input1, "==", input2);
+query.orderBy("timestamp", "desc").onSnapshot(snap=>{
   snap.forEach(nap=>{
     console.log(nap.id ,'=>',nap.data())
 
@@ -516,6 +576,7 @@ query.get().then(snap=>{
      <td>${user.paymentstatus}</td>
      <td>${user.totalprice}</td>
      <td>${user.dateofpay}<br> ${timeofpay} </td>
+     <td>${user.pickupdate}</td>
      <td><label class="switch table-switch">
        <input id="s${nap.id}" type="checkbox" ${send}>
        <span class="slider round table-slider table-round"></span>
@@ -665,5 +726,4 @@ query.get().then(snap=>{
 
 
   })
-})
-// })
+}

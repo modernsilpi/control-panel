@@ -15,8 +15,8 @@ db.collection('promocodes').onSnapshot(snap=>{
         <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">code</th>
-            <th scope="col">cut off</th>
+            <th scope="col">Code</th>
+            <th scope="col">Max price off</th>
             <th scope="col">Off</th>
             <th scope="col">Type</th>
             <th scope="col">Status</th>

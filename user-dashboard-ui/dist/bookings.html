@@ -313,8 +313,11 @@ input:checked + .table-slider:before {
   <header class="w3-container" style="padding-top:22px">
     <input type="text" id="searchinput" placeholder="Search by Phone No.">
     <button type="button" class="btn btn-secondary" id="searchbtn">search</button>
+<h4>search by date</h4>
+    <input type="date" id="findbydate" placeholder="YYYY - MM - DD">
+    <input type="text" class="btn btn-dark" id="todaypicks" ondblclick="(this.type='date')" placeholder="todaypickups">
+    <input type="text" class="btn btn-dark" id="todayreturns" ondblclick="(this.type='date')" placeholder="todayreturns">
 
-   
 
     <h5><b><i class="fa fa-dashboard"></i> Bookings</b></h5>
   </header>
@@ -335,6 +338,7 @@ input:checked + .table-slider:before {
       <th scope="col">Payment</th>
       <th scope="col">Amount</th>
       <th scope="col">date</th>
+      <th scope="col">pickup</th>
       <th scope="col">send</th>
       <th scope="col">recieved</th>
       <th scope="col">order</th>
@@ -353,6 +357,9 @@ input:checked + .table-slider:before {
 document.querySelector('#closesearch').addEventListener('click',(e)=>{
   document.querySelector('.searchresult').style.display="none"
   document.querySelector('#searchinput').value='';
+  document.querySelector('#findbydate').value='';
+  document.getElementById('todaypicks').type="text";
+  document.getElementById('todayreturns').type="text";
 
 })
 //show search result
@@ -376,6 +383,7 @@ document.querySelector('#searchbtn').addEventListener('click',(e)=>{
         <th scope="col">Payment</th>
         <th scope="col">Amount</th>
         <th scope="col">date</th>
+        <th scope="col">pickup</th>
         <th scope="col">send</th>
         <th scope="col">recieved</th>
         <th scope="col">order</th>
@@ -427,6 +435,7 @@ document.querySelector('#searchbtn').addEventListener('click',(e)=>{
         <th scope="col">Payment</th>
         <th scope="col">Amount</th>
         <th scope="col">date</th>
+        <th scope="col">pickup</th>
         <th scope="col">send</th>
         <th scope="col">recieved</th>
         <th scope="col">order</th>

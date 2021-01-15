@@ -250,6 +250,7 @@ input:checked + .table-slider:before {
     <a href="category.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-camera fa-fw"></i>  Category</a>
     <a href="products.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Products</a>
     <a href="bookings.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-ticket fa-fw"></i>  Bookings</a>
+    <a href="repairs.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-ticket fa-fw"></i>  Repairs</a>
     <a href="promocode.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-tags fa-fw"></i>  Promocode</a>
     <!-- <a href="notifications.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  Notifications</a> -->
     <br><br>
@@ -266,7 +267,39 @@ input:checked + .table-slider:before {
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
     <h5><b><i class="fa fa-dashboard"></i> Users</b></h5>
+    <input type="text" id="searchinput" placeholder="Search by Phone No.">
+    <button type="button" class="btn btn-secondary" id="searchbtn">search</button>
+    
   </header>
+
+
+<!-- search result -->
+<div class="searchresult">
+  <table class="table">
+      
+    <thead class="thead-dark">
+      <h6 style="text-align:center"><b>Search Result</b></h6>
+      <button class="btn btn-dark" style="margin-left: 950px;" id="closesearch">X</button>
+      <tr>
+        <th scope="col">S.NO</th>
+        <th scope="col">Name</th>
+        <th scope="col">mobile</th>
+        <th scope="col">Location</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody class="orders3">
+    </tbody>
+  </table>
+  
+  <div class="popfield3"></div>
+  
+  </div>
+
+
+
+
 <div class="usersmain">
 <table class="table">
       <thead class="thead-dark">
@@ -369,6 +402,14 @@ function w3_close() {
     mySidebar.style.display = "none";
     overlayBg.style.display = "none";
 }
+
+document.querySelector('.searchresult').style.display="none"
+   //none search result
+document.querySelector('#closesearch').addEventListener('click',(e)=>{
+  document.querySelector('.searchresult').style.display="none"
+  document.querySelector('#searchinput').value='';
+})
+
 </script>
 
 
