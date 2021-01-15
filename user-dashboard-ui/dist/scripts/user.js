@@ -32,6 +32,7 @@ function printusers(id){
             <input id="s${id}" type="checkbox" ${statee}>
             <span class="slider round table-slider table-round"></span>
           </label></td>
+          <td id="e${id}"><button class="btn btn-dark">edit</button></td>
         `;
         userlist.append(div);
 
@@ -91,10 +92,17 @@ function printusers(id){
             else userdb.update({status:"active"})
   
         })
+
+        //edit user details
+        const edit=document.querySelector(`#e${id}`);
+        edit.addEventListener('click',(e)=>{
+            document.querySelector('#editsections').style.display='block';
+            console.log("edit id",id)
+        })
     })
 
 }
-
+document.querySelector('#editsections').style.display='none'
 
 
 //search user by phone number
@@ -142,10 +150,12 @@ function printusers2(id){
           <td>${snap.data().phone}</td>
           <td>${snap.data().location}</td>
           <td>${snap.data().status}</td>
+
           <td><label class="switch table-switch">
             <input id="s${id}" type="checkbox" ${statee}>
             <span class="slider round table-slider table-round"></span>
           </label></td>
+                    
         `;
         orders3.append(div);
 

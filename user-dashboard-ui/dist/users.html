@@ -310,6 +310,8 @@ input:checked + .table-slider:before {
         <th scope="col">Location</th>
         <th scope="col">Status</th>
         <th scope="col">Action</th>
+        <th scope="col">Edit</th>
+        
       </tr>
     </thead>
     <tbody  class="userslist">
@@ -331,54 +333,75 @@ input:checked + .table-slider:before {
 
 
 
-<!-- Button trigger modal
-<button data-bs-toggle="modals" data-bs-target="#staticBackdrops">
-  Launch static backdrop modal
-</button>
-
- Modal 
-<div class="modal fade" id="staticBackdrops" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropsLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropsLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modals" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        akjshflvkhvlsika whdfh fsfsggbhd
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modals">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
-    </div>
-  </div>
-</div> -->
- 
-
-<!-- <a class="trigger_popup_fricc">Click here to show the popup</a> -->
 <div class="popfield"></div>
-<!-- <div class="hover_bkgr_fricc">
-    <span class="helper"></span>
-    <div>
-        <div class="popupCloseButton">&times;</div>
-        <p>Add any HTML content inside the popup box!</p>
+
+<!-- edit the user details here -->
+<div id="editsections">
+<section class="login-form" style="width: 400px; margin-left: 100px; margin-bottom: 50px;">
+  <form onsubmit="if(document.getElementById('checkboxx').checked) { accessto(); return false } else { alert('Please check terms&conditions'); return false; }">
+    
+    <div class="form-group">
+      <div class="form-group">
+        <label for="exampleInputPassword1">Phone number</label>
+        <input type="text" class="form-control phonenumber " id="phonenumber" placeholder="Your phone number" required>
+      </div>
+     
+      <div class="regname">
+        <label for="exampleInputEmail1">Name</label>
+        <input type="text" class="form-control signinname" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your name" required>
+        <input type="number" class="form-control" id="altphone" placeholder="Aleternative phone number" required>
+      </div>
+     
     </div>
-</div> -->
+   
+
+    <div class="form-group regaadhar">
+      <label for="adharfront">Upload your adharcard(front)</label>
+      <input type="file" class="form-control adharfront" id="adharfront"  placeholder="front" required>
+      <progress value="0" max="100" id="uploaderf">0%</progress>
+      <label for="adharback">Upload adharcard(back)</label>
+      <input type="file" class="form-control adharback" id="adharback" placeholder="back" required>
+      <progress value="0" max="100" id="uploaderb">0%</progress>
+
+      <label for="exampleInputPassword1">Enter your adharnumber</label>
+        <input type="number" class="form-control phonenumber " id="adharnumber" placeholder="Your adhar number" required>
+
+      <label for="otherid">Any other id(pan,driving liecense etc..,)</label>
+      <input type="file" class="form-control adharfront" id="otherid"  placeholder="front" required>
+      <progress value="0" max="100" id="otheridp">0%</progress>
+
+      <label for="profile">Upload your profile pic</label>
+      <input type="file" class="form-control" id="profilepic"  placeholder="front" required>
+      <progress value="0" max="100" id="profilepicp">0%</progress>
+    </div>
+
+    <div class="form-group location">
+      <label for="exampleInputPassword1">Location</label>
+      <input type="text" class="form-control signinlocation"  placeholder="Enter your location" required>
+      <label for="exampleInputPassword1">Your profession</label>
+      <input type="text" class="form-control signinprofession"  placeholder="Enter your profession here" required>
+
+
+    </div>
+
+    
+   
+    <div class="form-check regformcheck">
+      <input type="checkbox" class="form-check-input" id="checkboxx">
+      I have read and agree to the Terms and Conditions and Privacy Policy
+    </div>
+    <button type="submit" class="btn btn-dark signupsubmit" >Submit</button>
+    <button type="button" class="btn btn-dark signupsubmit" onclick="document.querySelector('#editsections').style.display='none' " >X</button>
+  </form>
+</section>
+</div>
+<!-- end of the edit user details -->
+
+
 
   <!-- End page content -->
 </div>
-<!-- <script>
-const popup=document.querySelector('.trigger_popup_fricc')
-const popbox=document.querySelector('.hover_bkgr_fricc')
-const closebut=document.querySelector('.popupCloseButton')
-popup.addEventListener('click',(e)=>{
-  popbox.style.display="block"
-})
-closebut.addEventListener('click',(e)=>{
-  popbox.style.display="none"
-})
-</script> -->
+
 <script>
 // Get the Sidebar
 var mySidebar = document.getElementById("mySidebar");
