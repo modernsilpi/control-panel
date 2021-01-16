@@ -294,6 +294,7 @@ function editproduct2(productid){
     
   }
 
+  
 // edit pic uploading 
 var productlink2;
 const adharfront2=document.querySelector('.adharfront2')

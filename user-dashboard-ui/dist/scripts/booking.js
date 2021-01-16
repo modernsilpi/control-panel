@@ -227,7 +227,7 @@ bookdb.orderBy("timestamp", "desc").onSnapshot(snap=>{
         const tr=document.createElement('tr');
         tr.innerHTML=`
         <td>${sl}</td>
-        <td id="f${nap.id}">${user.buyername}</td>
+        <td id="tf${nap.id}">${user.buyername}</td>
         <td>${user.buyerphone}</td>
         <td>${user.buyerlocation}</td>
         <td id="f${nap.id}"><b>${productname}</b></td>
@@ -345,10 +345,11 @@ bookdb.orderBy("timestamp", "desc").onSnapshot(snap=>{
             
        
                //user full details
-               const full=document.querySelector(`#f${nap.id}`);
+               const full=document.querySelector(`#tf${nap.id}`);
             //   console.log(`da${nap.id}`)
                full.addEventListener("click",(e)=>{
-                   e.preventDefault();
+                  //  e.preventDefault();
+                  console.log("user full details")
                    document.querySelector(`#da${nap.id}`).style.display="block";
        
                })

@@ -287,6 +287,7 @@ input:checked + .table-slider:before {
         <th scope="col">Location</th>
         <th scope="col">Status</th>
         <th scope="col">Action</th>
+        <th scope="col">Edit</th>
       </tr>
     </thead>
     <tbody class="orders3">
@@ -341,15 +342,16 @@ input:checked + .table-slider:before {
   <form onsubmit="if(document.getElementById('checkboxx').checked) { accessto(); return false } else { alert('Please check terms&conditions'); return false; }">
     
     <div class="form-group">
-      <div class="form-group">
+      <div class="forms-groups">
         <label for="exampleInputPassword1">Phone number</label>
-        <input type="text" class="form-control phonenumber " id="phonenumber" placeholder="Your phone number" required>
+        <input type="text" class="form-control " id="ephone" placeholder="Your phone number" required>
       </div>
      
       <div class="regname">
         <label for="exampleInputEmail1">Name</label>
-        <input type="text" class="form-control signinname" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your name" required>
-        <input type="number" class="form-control" id="altphone" placeholder="Aleternative phone number" required>
+        <input type="text" class="form-control signinname" id="ename" aria-describedby="emailHelp" placeholder="Enter your name" required><br>
+        <label>alternative phone number</label>
+        <input type="number" class="form-control" id="ealtphone" placeholder="Aleternative phone number" required>
       </div>
      
     </div>
@@ -357,29 +359,29 @@ input:checked + .table-slider:before {
 
     <div class="form-group regaadhar">
       <label for="adharfront">Upload your adharcard(front)</label>
-      <input type="file" class="form-control adharfront" id="adharfront"  placeholder="front" required>
-      <progress value="0" max="100" id="uploaderf">0%</progress>
+      <input type="file" class="form-control adharfront" id="eadharfront"  placeholder="front" >
+      <progress value="0" max="100" id="euploaderf">0%</progress><br>
       <label for="adharback">Upload adharcard(back)</label>
-      <input type="file" class="form-control adharback" id="adharback" placeholder="back" required>
-      <progress value="0" max="100" id="uploaderb">0%</progress>
+      <input type="file" class="form-control adharback" id="eadharback" placeholder="back" >
+      <progress value="0" max="100" id="euploaderb">0%</progress><br>
 
       <label for="exampleInputPassword1">Enter your adharnumber</label>
-        <input type="number" class="form-control phonenumber " id="adharnumber" placeholder="Your adhar number" required>
+        <input type="number" class="form-control phonenumber " id="eadharnumber" placeholder="Your adhar number" required>
 
       <label for="otherid">Any other id(pan,driving liecense etc..,)</label>
-      <input type="file" class="form-control adharfront" id="otherid"  placeholder="front" required>
-      <progress value="0" max="100" id="otheridp">0%</progress>
+      <input type="file" class="form-control adharfront" id="eotherid"  placeholder="front" >
+      <progress value="0" max="100" id="eotheridp">0%</progress><br>
 
       <label for="profile">Upload your profile pic</label>
-      <input type="file" class="form-control" id="profilepic"  placeholder="front" required>
-      <progress value="0" max="100" id="profilepicp">0%</progress>
+      <input type="file" class="form-control" id="eprofile"  placeholder="front" >
+      <progress value="0" max="100" id="eprofilep">0%</progress><br>
     </div>
 
     <div class="form-group location">
       <label for="exampleInputPassword1">Location</label>
-      <input type="text" class="form-control signinlocation"  placeholder="Enter your location" required>
+      <input type="text" class="form-control signinlocation" id="elocation" placeholder="Enter your location" required>
       <label for="exampleInputPassword1">Your profession</label>
-      <input type="text" class="form-control signinprofession"  placeholder="Enter your profession here" required>
+      <input type="text" class="form-control signinprofession" id="eprofession"  placeholder="Enter your profession here" required>
 
 
     </div>
